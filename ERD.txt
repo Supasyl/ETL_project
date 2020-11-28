@@ -18,6 +18,7 @@ name varchar
 year int4
 theme_id int FK -< Themes.theme_id
 num_parts int
+num_fig int
 
 Themes
 ---
