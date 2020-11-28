@@ -2,38 +2,26 @@
 
 ![Marking](image.png)
 
+TO DO:
+
+Cicily - (Next homework)
+John - Notebook coding, readme
+Daniel - API (with help)
+Sylvia - Report and cleaning
+
+
+
+
+
+Using 2020 data
 
 Use rebrickable csvs
 
 API to get brickset
-User rating, number of reviews
+User rating, number of reviews 
 
 ERD
 
 
-
-Colors
-
-Elements
-
-Inventories
-
-Inventory Minifigs
-
-Inventory Parts
-
-Inventory Sets
-
-Minifigs
-
-Part Categories
-
-Part Relationships
-
-Parts
-
-Sets
-
-Themes
 
 
