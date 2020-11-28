@@ -10,16 +10,27 @@ ERD
 
 
 Colors
+
 Elements
+
 Inventories
-Inventory Minifdig
+
+Inventory Minifigs
+
 Inventory Parts
+
 Inventory Sets
+
 Minifigs
+
 Part Categories
+
 Part Relationships
+
 Parts
+
 Sets
+
 Themes
 
 
