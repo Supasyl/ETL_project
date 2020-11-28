@@ -79,32 +79,3 @@ CREATE TABLE Elements (
 );
 
 
-ALTER TABLE Inventories ADD CONSTRAINT fk_Inventories_set_num FOREIGN KEY(set_num)
-REFERENCES Sets (set_num);
-
-ALTER TABLE Inventory_sets ADD CONSTRAINT fk_Inventory_sets_inventory_id FOREIGN KEY(inventory_id)
-REFERENCES Inventories (inventory_id);
-
-ALTER TABLE Inventory_sets ADD CONSTRAINT fk_Inventory_sets_set_num FOREIGN KEY(set_num)
-REFERENCES Sets (set_num);
-
-ALTER TABLE Sets ADD CONSTRAINT fk_Sets_theme_id FOREIGN KEY(theme_id)
-REFERENCES Themes (theme_id);
-
-ALTER TABLE Inventory_minifigs ADD CONSTRAINT fk_Inventory_minifigs_inventory_id FOREIGN KEY(inventory_id)
-REFERENCES Inventories (inventory_id);
-
-ALTER TABLE Inventory_minifigs ADD CONSTRAINT fk_Inventory_minifigs_fig_num FOREIGN KEY(fig_num)
-REFERENCES Minifigs (fig_num);
-
-ALTER TABLE Inventory_parts ADD CONSTRAINT fk_Inventory_parts_inventory_id FOREIGN KEY(inventory_id)
-REFERENCES Inventories (inventory_id);
-
-ALTER TABLE Inventory_parts ADD CONSTRAINT fk_Inventory_parts_part_num FOREIGN KEY(part_num)
-REFERENCES Parts (part_num);
-
-ALTER TABLE Inventory_parts ADD CONSTRAINT fk_Inventory_parts_color_id FOREIGN KEY(color_id)
-REFERENCES Colors (color_id);
-
-ALTER TABLE Parts ADD CONSTRAINT fk_Parts_category_id FOREIGN KEY(category_id)
-REFERENCES Parts_category (category_id);
