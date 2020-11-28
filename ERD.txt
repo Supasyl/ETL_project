@@ -1,0 +1,69 @@
+Inventories
+---
+inventory_id int PK
+version int
+set_num varchar FK -< Sets.set_num
+
+
+Inventory_sets
+---
+inventory_id int PK FK -< Inventories.inventory_id
+set_num PK varchar FK -< Sets.set_num
+quantity int
+
+Sets
+----
+set_num varchar PK
+name varchar
+year int4
+theme_id int FK -< Themes.theme_id
+num_parts int
+
+Themes
+---
+theme_id int PK
+name varchar
+
+
+Inventory_minifigs
+---
+inventory_id int PK FK -< Inventories.inventory_id
+fig_num varchar PK FK -< Minifigs.fig_num
+quantity int
+
+Minifigs
+----
+fig_num varchar PK
+name varchar
+num_parts int
+
+Inventory_parts
+---
+inventory_id int PK FK -< Inventories.inventory_id
+part_num varchar PK FK -< Parts.part_num
+color_id int PK FK -< Colors.color_id
+quantity int
+
+Parts
+---
+part_num varchar PK
+name varchar
+category_id int FK -< Parts_category.category_id
+
+Colors
+---
+color_id int PK
+name varchar
+rgb varchar
+is_trans bool
+
+Parts_category
+---
+category_id int PK
+name varchar
+
+Elements
+---
+element_id varchar PK
+part_num varchar FK -< Parts.part_num
+color_id int FK -< Colors.color_id
