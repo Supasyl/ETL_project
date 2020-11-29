@@ -11,7 +11,12 @@ They have requested the information be put into database format so that it can b
 
 #### **TASKS**
 - [ ] Readme
-- [ ] Folder structures
+- [ ] Folder structures - (Sylvia suggests:) This is the structure given in the guidelines (first 3):
+        - [ ] Extract: original data sources
+        - [ ] Transform: data cleaning and tranformation files
+        - [ ] Load: Final datbase, tables/collections and report (.pdf)
+        - [ ] Resources: All other information we used like the .jpg and .png
+        - [ ] Drafts: For documents that may need last minute changes like report in .docx
 - [ ] &nbsp;
 - [x] Collect lego sets information
 - [x] API calls to download user ratings
@@ -23,11 +28,11 @@ They have requested the information be put into database format so that it can b
 - [ ] Join data
 - [ ] &nbsp;
 - [ ] Database schema
-- [ ] Push data to database
+- [x] Push data to database - Sylvia: code added to main
 - [ ] &nbsp;
-- [ ] Code to view data (Testing only)
+- [x] Code to view data (Testing only) - Sylvia: code added to main
 - [ ] &nbsp;
-- [ ] Report
+- [x] Report - Only final changes to reflect final code
 
 
 
