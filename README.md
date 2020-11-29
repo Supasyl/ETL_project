@@ -1,6 +1,6 @@
 # ETL_project
 
-![Marking](image.png)
+![Marking](/resources/image.png)
 
 TO DO:
 
