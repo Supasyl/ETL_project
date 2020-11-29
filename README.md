@@ -41,10 +41,5 @@ They have requested the information be put into database format so that it can b
 - John Bingley [@github/JB-DA](https://github.com/JB-DA)
 
 
-#### **TASKS**
-- [ ] Readme
-- [ ] &nbsp;
-
-
 #### **MARKING GUIDE**
 ![Marking](/resources/marking.png)
