@@ -39,7 +39,7 @@ They have requested the information be put into database format so that it can b
 
 
 #### **MEMBERS**
-- Syliva Broadbent [@github/Supasyl](https://github.com/Supasyl)
+- Sylvia Broadbent [@github/Supasyl](https://github.com/Supasyl)
 - Cicily George [@github/CicilyGeorge](https://github.com/CicilyGeorge)
 - Daniel Sobral [@github/D0SO](https://github.com/D0SO) 
 - John Bingley [@github/JB-DA](https://github.com/JB-DA)
