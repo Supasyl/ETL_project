@@ -2,13 +2,13 @@ Inventories
 ---
 inventory_id int PK
 version int
-set_num varchar FK -< Sets.set_num
+set_num varchar FK >-< Sets.set_num
 
 
 Inventory_sets
 ---
-inventory_id int PK FK -< Inventories.inventory_id
-set_num PK varchar FK -< Sets.set_num
+inventory_id int PK FK >- Inventories.inventory_id
+set_num PK varchar FK >- Sets.set_num
 quantity int
 
 Sets
@@ -16,7 +16,7 @@ Sets
 set_num varchar PK
 name varchar
 year int4
-theme_id int FK -< Themes.theme_id
+theme_id int FK >- Themes.theme_id
 num_parts int
 
 Themes
@@ -27,8 +27,8 @@ name varchar
 
 Inventory_minifigs
 ---
-inventory_id int PK FK -< Inventories.inventory_id
-fig_num varchar PK FK -< Minifigs.fig_num
+inventory_id int PK FK >- Inventories.inventory_id
+fig_num varchar PK FK >- Minifigs.fig_num
 quantity int
 
 Minifigs
@@ -39,16 +39,16 @@ num_parts int
 
 Inventory_parts
 ---
-inventory_id int PK FK -< Inventories.inventory_id
-part_num varchar PK FK -< Parts.part_num
-color_id int PK FK -< Colors.color_id
+inventory_id int PK FK >- Inventories.inventory_id
+part_num varchar PK FK >- Parts.part_num
+color_id int PK FK >- Colors.color_id
 quantity int
 
 Parts
 ---
 part_num varchar PK
 name varchar
-category_id int FK -< Parts_category.category_id
+category_id int FK >- Parts_category.category_id
 
 Colors
 ---
@@ -65,5 +65,5 @@ name varchar
 Elements
 ---
 element_id varchar PK
-part_num varchar FK -< Parts.part_num
-color_id int FK -< Colors.color_id
+part_num varchar FK >- Parts.part_num
+color_id int FK >- Colors.color_id
