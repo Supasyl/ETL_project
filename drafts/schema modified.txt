@@ -11,103 +11,107 @@ DROP TABLE IF EXISTS Sets;
 DROP TABLE IF EXISTS Themes;
 
 
-CREATE TABLE Inventories (
+CREATE TABLE inventories (
     inventory_id int PRIMARY KEY,
     version int NOT NULL,
     set_num varchar NOT NULL
 );
 
-CREATE TABLE Inventory_sets (
+CREATE TABLE inventory_sets (
     inventory_id int NOT NULL,
     set_num varchar NOT NULL,
     quantity int NOT NULL,
 	PRIMARY KEY (inventory_id, set_num)
 );
 
-CREATE TABLE Sets (
+CREATE TABLE sets (
     set_num varchar PRIMARY KEY,
     name varchar NOT NULL,
     theme_id int NOT NULL,
-    num_parts int NOT NULL
+    num_parts int NOT NULL,
+    rating float,
+    reviewCount int
 );
 
-CREATE TABLE Themes (
+CREATE TABLE themes (
     theme_id int PRIMARY KEY,
-    theme varchar NOT NULL
+    parent_id int,
+    theme_name varchar NOT NULL
 );
 
-CREATE TABLE Inventory_minifigs (
+CREATE TABLE inventory_minifigs (
     inventory_id int NOT NULL,
     fig_num varchar NOT NULL,
     quantity int NOT NULL,
 	PRIMARY KEY (inventory_id, fig_num)
 );
 
-CREATE TABLE Minifigs (
+CREATE TABLE minifigs (
     fig_num varchar PRIMARY KEY,
     name varchar NOT NULL,
     num_parts int NOT NULL DEFAULT 1
 );
 
-CREATE TABLE Inventory_parts (
+CREATE TABLE inventory_parts (
     inventory_id int NOT NULL,
     part_num varchar NOT NULL,
     color_id int NOT NULL,
     quantity int NOT NULL,
+    is_spare int NOT NULL,
 	PRIMARY KEY (inventory_id, part_num, color_id)
 );
 
-CREATE TABLE Parts (
+CREATE TABLE parts (
     part_num varchar PRIMARY KEY,
     name varchar NOT NULL,
-    category_id int NOT NULL
+    part_cat_id int NOT NULL
 );
 
-CREATE TABLE Colors (
+CREATE TABLE colors (
     color_id int PRIMARY KEY,
     name varchar NOT NULL,
     rgb varchar NOT NULL,
     is_trans bool NOT NULL DEFAULT FALSE
 );
 
-CREATE TABLE Parts_category (
-    category_id int PRIMARY KEY,
-    name varchar NOT NULL
+CREATE TABLE parts_category (
+    part_cat_id int PRIMARY KEY,
+    part_name varchar NOT NULL
 );
 
-CREATE TABLE Elements (
+CREATE TABLE elements (
 	element_id varchar PRIMARY KEY,
 	part_num varchar NOT NULL,
 	color_id int NOT NULL
 );
 
 
-ALTER TABLE Inventories ADD CONSTRAINT fk_Inventories_set_num FOREIGN KEY(set_num)
-REFERENCES Sets (set_num);
+ALTER TABLE inventories ADD CONSTRAINT fk_inventories_set_num FOREIGN KEY(set_num)
+REFERENCES sets (set_num);
 
-ALTER TABLE Inventory_sets ADD CONSTRAINT fk_Inventory_sets_inventory_id FOREIGN KEY(inventory_id)
-REFERENCES Inventories (inventory_id);
+ALTER TABLE inventory_sets ADD CONSTRAINT fk_inventory_sets_inventory_id FOREIGN KEY(inventory_id)
+REFERENCES inventories (inventory_id);
 
-ALTER TABLE Inventory_sets ADD CONSTRAINT fk_Inventory_sets_set_num FOREIGN KEY(set_num)
-REFERENCES Sets (set_num);
+ALTER TABLE inventory_sets ADD CONSTRAINT fk_inventory_sets_set_num FOREIGN KEY(set_num)
+REFERENCES sets (set_num);
 
-ALTER TABLE Sets ADD CONSTRAINT fk_Sets_theme_id FOREIGN KEY(theme_id)
-REFERENCES Themes (theme_id);
+ALTER TABLE sets ADD CONSTRAINT fk_sets_theme_id FOREIGN KEY(theme_id)
+REFERENCES themes (theme_id);
 
-ALTER TABLE Inventory_minifigs ADD CONSTRAINT fk_Inventory_minifigs_inventory_id FOREIGN KEY(inventory_id)
-REFERENCES Inventories (inventory_id);
+ALTER TABLE inventory_minifigs ADD CONSTRAINT fk_inventory_minifigs_inventory_id FOREIGN KEY(inventory_id)
+REFERENCES inventories (inventory_id);
 
-ALTER TABLE Inventory_minifigs ADD CONSTRAINT fk_Inventory_minifigs_fig_num FOREIGN KEY(fig_num)
-REFERENCES Minifigs (fig_num);
+ALTER TABLE inventory_minifigs ADD CONSTRAINT fk_inventory_minifigs_fig_num FOREIGN KEY(fig_num)
+REFERENCES minifigs (fig_num);
 
-ALTER TABLE Inventory_parts ADD CONSTRAINT fk_Inventory_parts_inventory_id FOREIGN KEY(inventory_id)
-REFERENCES Inventories (inventory_id);
+ALTER TABLE inventory_parts ADD CONSTRAINT fk_inventory_parts_inventory_id FOREIGN KEY(inventory_id)
+REFERENCES inventories (inventory_id);
 
-ALTER TABLE Inventory_parts ADD CONSTRAINT fk_Inventory_parts_part_num FOREIGN KEY(part_num)
-REFERENCES Parts (part_num);
+ALTER TABLE inventory_parts ADD CONSTRAINT fk_inventory_parts_part_num FOREIGN KEY(part_num)
+REFERENCES parts (part_num);
 
-ALTER TABLE Inventory_parts ADD CONSTRAINT fk_Inventory_parts_color_id FOREIGN KEY(color_id)
-REFERENCES Colors (color_id);
+ALTER TABLE inventory_parts ADD CONSTRAINT fk_inventory_parts_color_id FOREIGN KEY(color_id)
+REFERENCES colors (color_id);
 
-ALTER TABLE Parts ADD CONSTRAINT fk_Parts_category_id FOREIGN KEY(category_id)
-REFERENCES Parts_category (category_id);
+ALTER TABLE parts ADD CONSTRAINT fk_parts_category_id FOREIGN KEY(part_cat_id)
+REFERENCES parts_category (part_cat_id);
