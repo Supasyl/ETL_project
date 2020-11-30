@@ -1,9 +1,7 @@
 DROP TABLE IF EXISTS elements;
-DROP TABLE IF EXISTS part_relationships;
 DROP TABLE IF EXISTS inventory_parts;
 DROP TABLE IF EXISTS parts;
 DROP TABLE IF EXISTS colors;
-DROP TABLE IF EXISTS parts_category;
 DROP TABLE IF EXISTS inventory_minifigs;
 DROP TABLE IF EXISTS minifigs;
 DROP TABLE IF EXISTS inventory_sets;
@@ -45,10 +43,10 @@ CREATE TABLE sets (
 CREATE TABLE themes (
     theme_id int NOT NULL,
     theme_name varchar NOT NULL,
-    parent_id int ,
+    parent_id int,
     CONSTRAINT pk_themes PRIMARY KEY (
         theme_id
-     )
+    )
 );
 
 CREATE TABLE inventory_minifigs (
@@ -70,20 +68,20 @@ CREATE TABLE minifigs (
 );
 
 CREATE TABLE inventory_parts (
+    index int NOT NULL,
     inventory_id int NOT NULL,
     part_num varchar NOT NULL,
     color_id int NOT NULL,
     quantity int DEFAULT 1,
     is_spare boolean NOT NULL,
     CONSTRAINT pk_inventory_parts PRIMARY KEY (
-        inventory_id,part_num,color_id
+        index
      )
 );
 
 CREATE TABLE parts (
     part_num varchar NOT NULL,
     name varchar NOT NULL,
-    category_id int NOT NULL,
     CONSTRAINT pk_parts PRIMARY KEY (
         part_num
      )
@@ -99,13 +97,7 @@ CREATE TABLE colors (
      )
 );
 
-CREATE TABLE parts_category (
-    category_id int NOT NULL,
-    name varchar NOT NULL,
-    CONSTRAINT pk_parts_category PRIMARY KEY (
-        category_id
-     )
-);
+
 
 CREATE TABLE elements(
     element_id varchar NOT NULL,
@@ -116,11 +108,6 @@ CREATE TABLE elements(
      )
 );
 
-CREATE TABLE part_relationships(
-    rel_type varchar NOT NULL,
-    child_part_num varchar, 
-    parent_part_num varchar
-);
 
 
 ALTER TABLE inventories ADD CONSTRAINT fk_inventories_set_num FOREIGN KEY(set_num)
@@ -133,9 +120,6 @@ ALTER TABLE inventory_sets ADD CONSTRAINT fk_inventory_sets_set_num FOREIGN KEY(
 REFERENCES sets (set_num);
 
 ALTER TABLE sets ADD CONSTRAINT fk_sets_theme_id FOREIGN KEY(theme_id)
-REFERENCES themes (theme_id);
-
-ALTER TABLE themes ADD CONSTRAINT fk_themes_parent_id FOREIGN KEY(parent_id)
 REFERENCES themes (theme_id);
 
 ALTER TABLE inventory_minifigs ADD CONSTRAINT fk_inventory_minifigs_inventory_id FOREIGN KEY(inventory_id)
@@ -153,23 +137,11 @@ REFERENCES parts (part_num);
 ALTER TABLE inventory_parts ADD CONSTRAINT fk_inventory_parts_color_id FOREIGN KEY(color_id)
 REFERENCES colors (color_id);
 
-ALTER TABLE parts ADD CONSTRAINT fk_parts_category_id FOREIGN KEY(category_id)
-REFERENCES parts_category (category_id);
-
 ALTER TABLE elements ADD CONSTRAINT fk_elements_part_num FOREIGN KEY(part_num)
 REFERENCES parts (part_num);
 
 ALTER TABLE elements ADD CONSTRAINT fk_elements_color_id FOREIGN KEY(color_id)
 REFERENCES colors (color_id);
-
-ALTER TABLE part_relationships ADD CONSTRAINT fk_part_relationships_child_part_num FOREIGN KEY(child_part_num)
-REFERENCES parts (part_num);
-
-ALTER TABLE part_relationships ADD CONSTRAINT fk_part_relationships_parent_part_num FOREIGN KEY(parent_part_num)
-REFERENCES parts (part_num);
-
-
-
 
 
 
