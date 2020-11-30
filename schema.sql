@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS elements;
-DROP TABLE IF EXISTS part_relationships
+DROP TABLE IF EXISTS part_relationships;
 DROP TABLE IF EXISTS inventory_parts;
 DROP TABLE IF EXISTS parts;
 DROP TABLE IF EXISTS colors;
