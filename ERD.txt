@@ -1,69 +1,79 @@
-Inventories
+inventories
 ---
 inventory_id int PK
 version int
 set_num varchar FK >-< Sets.set_num
 
 
-Inventory_sets
+inventory_sets
 ---
 inventory_id int PK FK >- Inventories.inventory_id
 set_num PK varchar FK >- Sets.set_num
 quantity int
 
-Sets
+sets
 ----
 set_num varchar PK
 name varchar
 year int4
 theme_id int FK >- Themes.theme_id
 num_parts int
+rating float
+review_count int
 
-Themes
+themes
 ---
 theme_id int PK
-name varchar
+theme_name varchar
+parent_id int FK - Themes.theme_id
 
 
-Inventory_minifigs
+inventory_minifigs
 ---
 inventory_id int PK FK >- Inventories.inventory_id
 fig_num varchar PK FK >- Minifigs.fig_num
 quantity int
 
-Minifigs
+minifigs
 ----
 fig_num varchar PK
 name varchar
 num_parts int
 
-Inventory_parts
+inventory_parts
 ---
 inventory_id int PK FK >- Inventories.inventory_id
 part_num varchar PK FK >- Parts.part_num
 color_id int PK FK >- Colors.color_id
 quantity int
+is_spare boolean
 
-Parts
+parts
 ---
 part_num varchar PK
 name varchar
 category_id int FK >- Parts_category.category_id
 
-Colors
+colors
 ---
 color_id int PK
 name varchar
 rgb varchar
-is_trans bool
+is_trans boolean
 
-Parts_category
+parts_category
 ---
 category_id int PK
 name varchar
 
-Elements
+elements
 ---
 element_id varchar PK
 part_num varchar FK >- Parts.part_num
 color_id int FK >- Colors.color_id
+
+part_relationships
+---
+rel_type varchar
+child_part_num varchar FK >- parts.part_num
+parent_part_num varchar FK >- parts.part_num
