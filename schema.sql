@@ -111,7 +111,7 @@ CREATE TABLE elements(
     element_id varchar NOT NULL,
     part_num varchar NOT NULL,
     color_id int NOT NULL, 
-    CONSTRAINT pk_parts_category PRIMARY KEY (
+    CONSTRAINT pk_elements PRIMARY KEY (
         element_id
      )
 );
@@ -119,7 +119,7 @@ CREATE TABLE elements(
 CREATE TABLE part_relationships(
     rel_type varchar NOT NULL,
     child_part_num varchar, 
-    parent_part_num varchar,
+    parent_part_num varchar
 );
 
 
@@ -163,9 +163,14 @@ ALTER TABLE elements ADD CONSTRAINT fk_elements_color_id FOREIGN KEY(color_id)
 REFERENCES colors (color_id);
 
 ALTER TABLE part_relationships ADD CONSTRAINT fk_part_relationships_child_part_num FOREIGN KEY(child_part_num)
-REFERENCES parts (child_part_num);
+REFERENCES parts (part_num);
 
 ALTER TABLE part_relationships ADD CONSTRAINT fk_part_relationships_parent_part_num FOREIGN KEY(parent_part_num)
-REFERENCES parts (parent_part_num);
+REFERENCES parts (part_num);
+
+
+
+
+
 
 
