@@ -20,6 +20,7 @@ CREATE TABLE inventories (
 CREATE TABLE inventory_sets (
     inventory_id int NOT NULL,
     set_num varchar NOT NULL,
+    quantity int,
 	PRIMARY KEY (inventory_id, set_num)
 );
 
@@ -27,17 +28,21 @@ CREATE TABLE sets (
     set_num varchar PRIMARY KEY,
     name varchar NOT NULL,
     theme_id int NOT NULL,
-    num_parts int NOT NULL
+    num_parts int NOT NULL,
+    rating float,
+    reviewCount int
 );
 
 CREATE TABLE themes (
     theme_id int PRIMARY KEY,
-    theme varchar NOT NULL
+    parent_id int,
+    theme_name varchar NOT NULL
 );
 
 CREATE TABLE inventory_minifigs (
     inventory_id int NOT NULL,
     fig_num varchar NOT NULL,
+    quantity int NOT NULL,
 	PRIMARY KEY (inventory_id, fig_num)
 );
 
@@ -51,13 +56,15 @@ CREATE TABLE inventory_parts (
     inventory_id int NOT NULL,
     part_num varchar NOT NULL,
     color_id int NOT NULL,
+    quantity int NOT NULL,
+    is_spare int NOT NULL,
 	PRIMARY KEY (inventory_id, part_num, color_id)
 );
 
 CREATE TABLE parts (
     part_num varchar PRIMARY KEY,
     name varchar NOT NULL,
-    category_id int NOT NULL
+    part_cat_id int NOT NULL
 );
 
 CREATE TABLE colors (
@@ -68,8 +75,8 @@ CREATE TABLE colors (
 );
 
 CREATE TABLE parts_category (
-    category_id int PRIMARY KEY,
-    name varchar NOT NULL
+    part_cat_id int PRIMARY KEY,
+    part_name varchar NOT NULL
 );
 
 CREATE TABLE elements (
