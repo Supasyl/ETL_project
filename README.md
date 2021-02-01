@@ -25,4 +25,7 @@ As a small data analytics firm, our client approached us with an urgent project 
 They have requested the information be put into database format so that it can be accessed in a way that they are already familiar with.
 
 #### **PROJECT REPORT**
-![Project Report](ETL_Project_report.pdf)
+![Project Report](ETL_Project_report_1.jpg)
+![Project Report](ETL_Project_report_2.jpg)
+![Project Report](ETL_Project_report_3.jpg)
+![Project Report](ETL_Project_report_4.jpg)
